@@ -80,4 +80,4 @@ data = {
   }
 }
 
-PrawnResume.to_pdf_file(filename: "test/resume.pdf", data: data, template: :default)
+PrawnResume.to_pdf_file(filename: "test/example.pdf", data: data, template: :default)

@@ -1,4 +1,4 @@
-module PrawnRails
+module PrawnResume
   module Templates
     
     def self.classes

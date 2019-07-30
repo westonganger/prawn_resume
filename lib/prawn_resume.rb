@@ -6,6 +6,8 @@ require "prawn_resume/mime"
 require "prawn_resume/action_controller_renderer"
 
 require "prawn_resume/templates"
+require "prawn_resume/templates/base_template"
+require "prawn_resume/templates/default"
 
 module PrawnResume
 
@@ -18,12 +20,12 @@ module PrawnResume
 
     validate_schema(template: template, data: data)
 
-    template.render_pdf
+    template.generate_pdf.render
   end
 
-  def self.to_pdf_file(filename: , **args)
-    File.write(filename, "wb") do |f|
-      f.write self.to_pdf(*args)
+  def self.to_pdf_file(filename:, data:, template: PrawnResume::Templates::Default)
+    File.open(filename, "wb") do |f|
+      f.write self.to_pdf(data: data, template: template)
     end
   end
 
